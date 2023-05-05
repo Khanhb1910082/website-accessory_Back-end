@@ -19,7 +19,7 @@ app.get('/api/products', async (req, res) => {
 
   );
   const db = client.db('blackrose');
-  const products = await db.collection('fashion').find({}).toArray();
+  const products = (await db.collection('fashion').find({}).toArray());
 
   res.status(200).json(products);
   client.close();
@@ -62,6 +62,8 @@ app.get('/api/products/:productId', async (req, res) => {
   }
   client.close();
 })
+
+
 
 app.post('/api/users/:userId/cart', async (req, res) => {
   const { userId } = req.params;
